@@ -3,31 +3,31 @@ What this Is:
 -------------
 A nice juicy list of things to adblock using the illustrious Unbound DNS.
 
-While Unbound is nice on linux, and VERY nice on your router, you can even install Unbound DNS on windows. See here for the installer: https://nlnetlabs.nl/projects/unbound/download/ 
+While Unbound is nice on linux, and VERY nice on your router, you can even install Unbound DNS on windows. 
+See here for the installer and short guide: https://nlnetlabs.nl/projects/unbound/download/ 
 
-Why is blocking hosts useful:
+Blocking things with Unbound leaves bandwidth for what you want, like gaming:
 -----------------------------
-If you want to make life easier for yourself, and/or your adblocker on your browser, don't connect to an advertising/illicit website at all in the first place, and then there's 1 less thing to block/cover up after the fact. The only possible downside is if you block something you find out you needed, but you're free to prune your list as you see fit. 
+If you want to make life easier for yourself, and/or your adblocker on your browser, don't connect to an advertising/illicit website at all in the first place! That leaves 1 less thing to block after the fact. Adblockers have less to deal with.
+The only possible downside is if you accidentally block something you find out you needed, but you're free to prune your list as you see fit. 
 
-All this works by stopping your PC asking a DNS server for a website's IP address if you don't want it to load. Unbound DNS is special because it does more (and more securely) than regular DNS servers and lets your PC be selfsufficient without having to rely on any other DNS servers that may be actively recording your habits.
+Unbound DNS is special because it does more (and more securely) than regular DNS servers and lets your PC be selfsufficient without having to rely on any other DNS servers that may be actively recording your habits.
 
-Backup a sec...what is a DNS server?
+Hold on a sec...what is a DNS server?
 ------------------------------------
-A DNS server is a program that keeps a record of what a website's IP address is (likely to change quite regularly), 
-to let you type in "https://www.youtube.com" (nice and readable for humans) and not have to remember a bunch of numbers and have to navigate to 172.217.19.206 (ipv4)  OR  2a00:1450:400e:808::200e  (ipv6). 
+A DNS server is a program that keeps a record of what a website's IP address is (likely to change quite regularly, which is why until recently having your own was a massive undertaking). 
+The DNS server makes life easier by letting you type in "https://www.youtube.com" (nice and readable for humans) and not have to remember a bunch of numbers and have to navigate to 172.217.19.206 (ipv4)  OR  2a00:1450:400e:808::200e  (ipv6). 
 These will still work of course! 
 
-By default, your ISP gives you theirs to use, but some people use Cloudflare's (1.1.1.1) or Google's (8.8.8.8) as they can be slightly faster, though really you're simply shifting the control of your browsing history to a new master.
+By default, your ISP gives you theirs to use, but some people use Cloudflare's (1.1.1.1) or Google's (8.8.8.8) as they can be slightly faster.  There are many DNS servers (your institution may provide one), some of which are free and have decent performance, though really you're simply shifting the control of your browsing history to a new master and there's a lot of positives for running Unbound for yourself and keeping it all in-house.
 
-When you're loading a web page (simplified):
-
-Your PC asks your set DNS server for the website's address: and if it finds it, it tells you.
+Your PC asks your set DNS server for the website's IP address: and if it finds it, it tells you and loads it up.
 
 
 So how does this blocking work precisely?
 -----------------------------------------
-If you add entries to your 'hosts' file ("C:\Windows\system32\drivers\etc\hosts" WINDOWS or "/etc/hosts" LINUX) or Unbound blocklist, entries get looked first at before asking out for them.
-In this way, you intercept the request by looking for the website's address on your own system, which stops any unwanted sites from being queried, so there's nothing to load, nothing to later block and your bandwidth can be used how YOU want it to be.
+If you add entries to your 'hosts' file ("C:\Windows\system32\drivers\etc\hosts" WINDOWS or "/etc/hosts" LINUX) or Unbound blocklist, entries get first dibs before we have to ask a DNS server for an answer.
+In this way, you intercept the request by looking for the website's address on your own system, which stops any unwanted sites from being queried to begin with, so there's nothing to load, nothing to later block and your bandwidth can be used how YOU want it to be.
 
 Unbound DNS server can block access to looking up a domain's IP address in 3 ways so far as I've discovered:
 
@@ -35,12 +35,12 @@ Unbound DNS server can block access to looking up a domain's IP address in 3 way
 2) Saying the domain doesn't exist       ("always_nxdomain")  
 3) Directing it to 0.0.0.0 (as an alias)   "X redirect; X A 0.0.0.0"
 
-Some research suggests option 2 may be faster (as it doesn't involve redirection?), it simply says "Nope. That's not real." rather than "Sorry, they're on the naughty list" or "Sure, it's....0.0.0.0"
+Some research suggests option 2 may be faster (as it doesn't involve redirection?), it simply says "Nope. That's not real." rather than "Sorry, they're on the naughty list" or "Sure, it's....0.0.0.0" so I like to use option 2 unless there's evidence to the opposing methods.
 
 
 So which blocklist or hosts file should I choose?
 -----------------------------
-By far the finest compilation of sites to block with a hosts file can be found at StevenBlack's here on github (https://github.com/StevenBlack/hosts/), sourced from multiple places including the classic "MVPS" etc
+By far the finest compilation of sites to block with a hosts file can be found at StevenBlack's here on github (https://github.com/StevenBlack/hosts/), sourced from multiple places including the classic "MVPS" etc You can select to block just the baselist or include social media, porn, gambling, fake news etc
 
 Typically, we neuter the connection by redirecting to 0.0.0.0 (some people use "127.0.0.1" but "0.0.0.0" is the foolproof/slightly faster choice on most systems.)
 
