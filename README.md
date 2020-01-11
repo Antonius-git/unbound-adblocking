@@ -1,7 +1,7 @@
 # unbound-adblocking
 What this Is:
 -------------
-A nice juicy list of things to adblock using the illustrious Unbound DNS
+A nice juicy list of things to adblock using the illustrious Unbound DNS.
 While Unbound is nice on linux and very nice on your router, you can even install Unbound DNS on windows https://nlnetlabs.nl/projects/unbound/download/ 
 
 Why is blocking hosts useful:
