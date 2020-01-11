@@ -4,6 +4,7 @@ What this Is:
 A nice juicy list of things to adblock using the illustrious Unbound DNS and the config file I'm using along with it. 
 
 While Unbound is nice on linux, and VERY nice on your router, you can even install Unbound DNS on windows. 
+
 See here for the installer and short guide: https://nlnetlabs.nl/projects/unbound/download/ 
 
 Blocking things with Unbound leaves bandwidth for what you want, like gaming:
