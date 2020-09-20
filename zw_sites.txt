@@ -1,0 +1,6 @@
+local-zone: "5wh.co.zw" always_nxdomain
+local-zone: "crazynews24.co.zw" always_nxdomain
+local-zone: "distinctfreight.co.zw" always_nxdomain
+local-zone: "genesiswoodworking.co.zw" always_nxdomain
+local-zone: "secure.v.co.zw" always_nxdomain
+local-zone: "v.co.zw" always_nxdomain

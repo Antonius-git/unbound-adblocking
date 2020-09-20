@@ -1,0 +1,16 @@
+local-zone: "alizanjani.ir" always_nxdomain
+local-zone: "avaparse.ir" always_nxdomain
+local-zone: "coding.1100011.ir" always_nxdomain
+local-zone: "electrofan.ir" always_nxdomain
+local-zone: "gonapa.ir" always_nxdomain
+local-zone: "gostats.ir" always_nxdomain
+local-zone: "hackerz.ir" always_nxdomain
+local-zone: "jannatkhah.ir" always_nxdomain
+local-zone: "laleh.itrc.ac.ir" always_nxdomain
+local-zone: "makanaliabadian.ir" always_nxdomain
+local-zone: "mlm724.ir" always_nxdomain
+local-zone: "nutnet.ir" always_nxdomain
+local-zone: "persianstat.ir" always_nxdomain
+local-zone: "presstv.ir" always_nxdomain
+local-zone: "randewoo.ir" always_nxdomain
+local-zone: "wikiforosh.ir" always_nxdomain

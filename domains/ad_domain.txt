@@ -1,0 +1,7 @@
+local-zone: "centro.pixel.ad" always_nxdomain
+local-zone: "chameleon.ad" always_nxdomain
+local-zone: "content.ad" always_nxdomain
+local-zone: "files.native.ad" always_nxdomain
+local-zone: "nugg.ad" always_nxdomain
+local-zone: "token.ad" always_nxdomain
+local-zone: "pixel.ad" always_nxdomain

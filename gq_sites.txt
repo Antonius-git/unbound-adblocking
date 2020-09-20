@@ -1,0 +1,9 @@
+local-zone: "acount-cheks0912.suport-acount-confrim12.gq" always_nxdomain
+local-zone: "cyxiangjishoptk.gq" always_nxdomain
+local-zone: "fakturo-wnia.gq" always_nxdomain
+local-zone: "fakturownia-pl.gq" always_nxdomain
+local-zone: "file-error-09x38.gq" always_nxdomain
+local-zone: "karta-podarunkowa-podaj-dane.gq" always_nxdomain
+local-zone: "miercuri.gq" always_nxdomain
+local-zone: "pinupfiles.gq" always_nxdomain
+local-zone: "uzupelniajdane.gq" always_nxdomain
