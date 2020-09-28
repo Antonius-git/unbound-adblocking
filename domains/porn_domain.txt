@@ -1,0 +1,24 @@
+# NB: This is not a porn block. This block nefarious sites collected that end in .porn.
+
+local-zone: "24xxx.porn" always_nxdomain
+local-zone: "asiantube.porn" always_nxdomain
+local-zone: "de.gig.porn" always_nxdomain
+local-zone: "freemilfs.porn" always_nxdomain
+local-zone: "freemobile.porn" always_nxdomain
+local-zone: "freetranny.porn" always_nxdomain
+local-zone: "fr.freeshemale.porn" always_nxdomain
+local-zone: "gig.porn" always_nxdomain
+local-zone: "hdtube.porn" always_nxdomain
+local-zone: "house.porn" always_nxdomain
+local-zone: "indiansexvideos.porn" always_nxdomain
+local-zone: "it.freetranny.porn" always_nxdomain
+local-zone: "its.porn" always_nxdomain
+local-zone: "japanesesites.porn" always_nxdomain
+local-zone: "jerk.porn" always_nxdomain
+local-zone: "matures.porn" always_nxdomain
+local-zone: "mzansi.porn" always_nxdomain
+local-zone: "pornktube.porn" always_nxdomain
+local-zone: "pretty.porn" always_nxdomain
+local-zone: "thegay.porn" always_nxdomain
+local-zone: "twister.porn" always_nxdomain
+local-zone: "vtrahetut.porn" always_nxdomain
