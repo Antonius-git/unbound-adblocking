@@ -1034,7 +1034,6 @@ ScriptHeader(){
 }
 
 MainMenu(){
-	ChronyIPVersionCheck
 	NTP_REDIRECT_ENABLED=""
 	if Auto_NAT check; then
 		NTP_REDIRECT_ENABLED="Enabled"
@@ -1042,12 +1041,13 @@ MainMenu(){
 		NTP_REDIRECT_ENABLED="Disabled"
 	fi
 	TIMESERVER_NAME_MENU="$(TimeServer "check")"
+	ChronyIPVersionCheck
 	
 	printf "1.    Generate updated %s graphs now\\n\\n" "$SCRIPT_NAME"
 	printf "2.    Toggle redirect of all NTP traffic to %s\\n      (currently %s)\\n\\n" "$SCRIPT_NAME" "$NTP_REDIRECT_ENABLED"
 	printf "3.    Edit %s config\\n\\n" "$SCRIPT_NAME"
-	printf "s.    Configure options for collection of stats\\n"
-	printf "t.    Switch timeserver between ntpd and chronyd\\n      Currently using \\e[1m%s\\e[0m\\n\\n" "$TIMESERVER_NAME_MENU"
+	printf "s.    Configure options for collection of stats\\n\\n"
+	printf "t.    Switch timeserver between ntpd and chronyd\\n      Currently using \\e[1m%s\\e[0m\\n" "$TIMESERVER_NAME_MENU"
 	printf "v.    (Chrony only) Restart the server to use either 'ipv4' or 'ipv4+v6 mixed' modes. \\n      Currently in \\e[1m%s\\e[0m\\n\\n" "$CHRONY_IP_VER mode"
 	printf "r.    Restart %s\\n\\n" "$TIMESERVER_NAME_MENU"
 	printf "u.    Check for updates\\n"
@@ -1267,46 +1267,46 @@ Menu_GenerateStats(){
 }
 
 MenuStats(){
+	ScriptHeader
 	printf "1.    Toggle data output mode\\n      Currently \\e[1m%s\\e[0m values will be used for weekly and monthly charts\\n\\n" "$(OutputDataMode "check")"
 	printf "2.    Toggle time output mode\\n      Currently \\e[1m%s\\e[0m time values will be used for CSV exports\\n\\n" "$(OutputTimeMode "check")"
 	printf "3.    Toggle storage location for stats and config\\n      Current location is \\e[1m%s\\e[0m \\n\\n" "$(ScriptStorageLocation "check")"
 	printf "e.    Exit to previous menu\\n"    
-	Menu_ConfigureStats(){
-		while true; do
-			printf "Choose an option:    "
-			read -r "menu2"
-			case "$menu2" in
-				1)
-					printf "\\n"
-					Menu_ToggleOutputDataMode
-					break
-				;;
-				2)
-					printf "\\n"
-					Menu_ToggleOutputTimeMode
-					break
-				;;
-				3)
-					printf "\\n"
-					Menu_ToggleStorageLocation
-					break
-				;;
-				e)
-					ScriptHeader
-					printf "\\n\\e[1mThanks for using %s!\\e[0m\\n\\n\\n" "$SCRIPT_NAME"
-					\\exit 0
-					sleep 2
-					MainMenu
-				;;
-				*)
-					printf "\\nPlease choose a valid option\\n\\n"
-				;;
-			esac
-		done
 	
-		//ScriptHeader
-		//MenuStats
-	}
+	while true; do
+		printf "Choose an option:    "
+		read -r "menu2"
+		case "$menu2" in
+			1)
+				printf "\\n"
+				Menu_ToggleOutputDataMode
+				break
+			;;
+			2)
+				printf "\\n"
+				Menu_ToggleOutputTimeMode
+				break
+			;;
+			3)
+				printf "\\n"
+				Menu_ToggleStorageLocation
+				break
+			;;
+			e)
+				ScriptHeader
+				printf "\\n\\e[1mThanks for using %s!\\e[0m\\n\\n\\n" "$SCRIPT_NAME"
+				\\exit 0
+				sleep 2
+				MainMenu
+			;;
+			*)
+				printf "\\nPlease choose a valid option\\n\\n"
+			;;
+		esac
+	done
+	
+	//ScriptHeader
+	//MenuStats
 }
 
 Menu_ToggleOutputDataMode(){
