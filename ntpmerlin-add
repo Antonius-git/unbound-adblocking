@@ -1191,26 +1191,27 @@ Check_Requirements(){
 	fi
 }
 
+ChronyIPVersionChange(){
+	ChronyIPVersionCheck
+	if [ "$TIMESERVER_NAME_MENU" = "chronyd" && $CHRONY_IP_VER="v4+v6 mixed" ]; then
+		sed -i 's/ARGS="-r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/ARGS="-4 -r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/g' /opt/etc/init.d/S77chronyd
+		Menu_RestartTimeServer
+	elif [ "$TIMESERVER_NAME_MENU" = "chronyd" && $CHRONY_IP_VER="v4" ]; then
+		sed -i 's/ARGS="-4 -r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/ARGS="-r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/g' /opt/etc/init.d/S77chronyd
+		Menu_RestartTimeServer
+	fi	
+}
+
 ChronyIPVersionCheck(){
-	if [ "$TIMESERVER_NAME" = "chronyd" ] && [ grep -Fqsx 'ARGS="-r -u nobody -f $SCRIPT_STORAGE_DIR/chrony.conf"' /opt/etc/init.d/S77chronyd ]; then
+	TIMESERVER_NAME_MENU="$(TimeServer "check")"
+	if [ "$TIMESERVER_NAME_MENU" = "chronyd" ] && [ grep -Fqsx 'ARGS="-r -u nobody -f $SCRIPT_STORAGE_DIR/chrony.conf"' /opt/etc/init.d/S77chronyd ]; then
 		CHRONY_IP_VER="v4+v6 mixed"
-	elif [ "$TIMESERVER_NAME" = "chronyd" ] && [ grep -Fqsx 'ARGS="-4 -r -u nobody -f $SCRIPT_STORAGE_DIR/chrony.conf"' /opt/etc/init.d/S77chronyd ]; then
+	elif [ "$TIMESERVER_NAME_MENU" = "chronyd" ] && [ grep -Fqsx 'ARGS="-4 -r -u nobody -f $SCRIPT_STORAGE_DIR/chrony.conf"' /opt/etc/init.d/S77chronyd ]; then
 		CHRONY_IP_VER="v4"
 	else
 		CHRONY_IP_VER="N/A"
 		return 0
 	fi
-}
-
-ChronyIPVersionChange(){
-	ChronyIPVersionCheck
-	if [ "$TIMESERVER_NAME" = "chronyd" && $CHRONY_IP_VER="v4+v6 mixed" ]; then
-		sed -i 's/ARGS="-r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/ARGS="-4 -r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/g' /opt/etc/init.d/S77chronyd
-		Menu_RestartTimeServer
-	elif [ "$TIMESERVER_NAME" = "chronyd" && $CHRONY_IP_VER="v4" ]; then
-		sed -i 's/ARGS="-4 -r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/ARGS="-r -u nobody -f $SCRIPT_STORAGE_DIR\/chrony.conf"/g' /opt/etc/init.d/S77chronyd
-		Menu_RestartTimeServer
-	fi	
 }
 
 Menu_Install(){
