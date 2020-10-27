@@ -1196,6 +1196,7 @@ ChronyIPVersionCheck(){
 		if [ grep -Fqsx 'ARGS="-r -u nobody -f $SCRIPT_STORAGE_DIR/chrony.conf"' /opt/etc/init.d/S77chronyd ]; then
 			CHRONY_IP_VER="v4+v6 mixed"
 			return 0
+		fi	
 		if [ grep -Fqsx 'ARGS="-4 -r -u nobody -f $SCRIPT_STORAGE_DIR/chrony.conf"' /opt/etc/init.d/S77chronyd ]; then
 			CHRONY_IP_VER="v4"
 			return 0
